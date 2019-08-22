@@ -10,7 +10,10 @@ download.file(url, datafile, method = "curl")
 unzip(datafile)
 
 # read file
-data <- read.table("household_power_consumption.txt", sep = ";", header = TRUE, stringsAsFactors = FALSE)
+data <- read.table("household_power_consumption.txt", 
+                   sep = ";", 
+                   header = TRUE,
+                   stringsAsFactors = FALSE)
 
 data$Date <- as.Date(data$Date, format = "%d/%m/%Y")
 
