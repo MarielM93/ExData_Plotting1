@@ -31,75 +31,15 @@ tidydata$Sub_metering_1 <- as.numeric(tidydata$Sub_metering_1)
 tidydata$Sub_metering_2 <- as.numeric(tidydata$Sub_metering_2)
 tidydata$Sub_metering_3 <- as.numeric(tidydata$Sub_metering_3)
 
-# plot 1
-hist(tidydata$Global_active_power,
-     col = "red",
-     main = "Global Active Power",
-     xlab = "Global Active Power (kilowatts)")
+# plotting the graphs
+## plot 1
+source("plot1.R")
 
-dev.copy(png, file = "plot1.png", width = 480, height = 480)
-dev.off() #close the device
+## plot 2
+source("plot2.R")
 
-# plot 2
-with(tidydata, plot(DateTime, 
-                    Global_active_power, 
-                    type = "l", 
-                    ylab = "Global Active Power (kilowatts)"))
+## plot 3
+source("plot3.R")
 
-dev.copy(png, file = "plot2.png", width = 480, height = 480)
-dev.off() #close the device
-
-# plot 3
-with(tidydata, plot(DateTime, 
-                    Sub_metering_1, 
-                    type = "l", 
-                    xlab = "", 
-                    ylab = "Energy sub metering"))
-lines(tidydata$DateTime, tidydata$Sub_metering_2, col = "red")
-lines(tidydata$DateTime, tidydata$Sub_metering_3, col = "blue")
-legend("topright", 
-       col = c("black", "red", "blue"), 
-       legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
-       lty = 1)
-dev.copy(png, file = "plot3.png", width = 480, height = 480)
-dev.off() #close the device
-
-# plot 4
-par(mfcol = c(2,2))
-
-## plot 4a
-with(tidydata, plot(DateTime, 
-                    Global_active_power, 
-                    type = "l", 
-                    ylab = "Global Active Power (kilowatts)"))
-
-## plot 4b
-with(tidydata, plot(DateTime, 
-                    Sub_metering_1, 
-                    type = "l", 
-                    xlab = "", 
-                    ylab = "Energy sub metering"))
-lines(tidydata$DateTime, tidydata$Sub_metering_2, col = "red")
-lines(tidydata$DateTime, tidydata$Sub_metering_3, col = "blue")
-legend("topright", 
-       col = c("black", "red", "blue"), 
-       legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
-       lty = 1,
-       cex = 0.5, bty = "n")
-
-## plot 4c
-with(tidydata, plot(DateTime, 
-                    Voltage, 
-                    type = "l", 
-                    ylab = "Voltage", 
-                    xlab = "datetime"))
-
-## plot 4d
-with(tidydata, plot(DateTime,
-                    Global_reactive_power,
-                    type = "l",
-                    ylab = "Global_reactive_power",
-                    xlab = "datetime"))
-
-dev.copy(png, file = "plot4.png", width = 480, height = 480)
-dev.off() #close the device
+## plot 4
+source("plot4.R")
